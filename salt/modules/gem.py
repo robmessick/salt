@@ -35,7 +35,8 @@ def install(gems,           # pylint: disable=C0103
             runas=None,
             version=None,
             rdoc=False,
-            ri=False):      # pylint: disable=C0103
+            ri=False,
+            pre_releases=False):      # pylint: disable=C0103
     '''
     Installs one or several gems.
 
@@ -68,6 +69,8 @@ def install(gems,           # pylint: disable=C0103
         options.append('--no-rdoc')
     if not ri:
         options.append('--no-ri')
+    if pre_releases:
+        options.append('--pre')
     
     cmdline_args = ' '.join(options)
     return _gem('install {gems} {options}'.format(gems=gems,
